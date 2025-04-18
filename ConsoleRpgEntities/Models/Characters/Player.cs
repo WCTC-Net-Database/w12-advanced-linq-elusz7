@@ -29,20 +29,14 @@ namespace ConsoleRpgEntities.Models.Characters
                 {
                     int damage = weapon.Use();
 
-                    if (damage > 0)
+                    if (damage !=  -1)
                     {
                         OutputDamage(target.Name, weapon.Name, damage);
 
-                        if (target is Monster monster)
-                        {
-                            monster.TakeDamage(damage);
-                        }
-                        else
-                        {
-                            target.TakeDamage(damage);
-                        }
+                        target.TakeDamage(damage);
 
-                        if (weapon.Durability == 0)
+                        Console.WriteLine($"{weapon.Name} : durability {weapon.Durability}");
+                        if (weapon.Durability <= 0)
                         {
                             Console.WriteLine($"{weapon.Name} is broken and cannot be used anymore!");
                         }
@@ -135,7 +129,7 @@ namespace ConsoleRpgEntities.Models.Characters
 
             while (true)
             {
-                Console.WriteLine("Which weapon do you want to use? (Enter the number)");
+                Console.Write("Which weapon do you want to use? (Enter the number) ");
                 bool isInt = int.TryParse(Console.ReadLine(), out var weaponIndex);
 
                 if (weaponIndex < 1 || weaponIndex > validWeapons.Count || !isInt)

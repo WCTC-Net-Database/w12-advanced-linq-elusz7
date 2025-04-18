@@ -3,6 +3,7 @@ using ConsoleRpgEntities.Data;
 using ConsoleRpgEntities.Models.Attributes;
 using ConsoleRpgEntities.Models.Characters;
 using ConsoleRpgEntities.Models.Characters.Monsters;
+using ConsoleRpgEntities.Models.Items;
 
 namespace ConsoleRpg.Services;
 
@@ -11,14 +12,16 @@ public class GameEngine
     private readonly GameContext _context;
     private readonly MenuManager _menuManager;
     private readonly OutputManager _outputManager;
+    private readonly InventoryManager _inventoryManager;
 
     private IPlayer? _player;
     private IMonster? _goblin;
 
-    public GameEngine(GameContext context, MenuManager menuManager, OutputManager outputManager)
+    public GameEngine(GameContext context, MenuManager menuManager, OutputManager outputManager, InventoryManager inventoryManager)
     {
         _menuManager = menuManager;
         _outputManager = outputManager;
+        _inventoryManager = inventoryManager;
         _context = context;
     }
 
@@ -38,7 +41,8 @@ public class GameEngine
         {
             _outputManager.WriteLine("Choose an action:", ConsoleColor.Cyan);
             _outputManager.WriteLine("1. Attack");
-            _outputManager.WriteLine("2. Quit");
+            _outputManager.WriteLine("2. Inventory Management");
+            _outputManager.WriteLine("3. Quit");
 
             _outputManager.Display();
 
@@ -50,12 +54,15 @@ public class GameEngine
                     AttackCharacter();
                     break;
                 case "2":
+                    _inventoryManager.InventoryMenu(_player, _context.Items.OfType<Item>().ToList(), this);
+                    break;
+                case "3":
                     _outputManager.WriteLine("Exiting game...", ConsoleColor.Red);
                     _outputManager.Display();
                     Environment.Exit(0);
                     break;
                 default:
-                    _outputManager.WriteLine("Invalid selection. Please choose 1.", ConsoleColor.Red);
+                    _outputManager.WriteLine("Invalid selection. Please try again.", ConsoleColor.Red);
                     break;
             }
         }

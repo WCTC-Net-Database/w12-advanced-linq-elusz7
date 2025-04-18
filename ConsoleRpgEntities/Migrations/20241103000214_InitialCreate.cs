@@ -54,7 +54,7 @@ namespace ConsoleRpgEntities.Migrations
                     Value = table.Column<double>(type: "decimal(5,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weight = table.Column<double>(type: "decimal(5,2)", nullable: false),
-                    InventoryId = table.Column<int>(type: "int", nullable: false),
+                    InventoryId = table.Column<int>(type: "int", nullable: true),
                     ItemType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AttackPower = table.Column<int>(type: "int", nullable: true),
                     DefensePower = table.Column<int>(type: "int", nullable: true),
@@ -68,7 +68,7 @@ namespace ConsoleRpgEntities.Migrations
                         column: x => x.InventoryId,
                         principalTable: "Inventories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
