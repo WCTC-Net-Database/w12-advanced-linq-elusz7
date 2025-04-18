@@ -122,6 +122,11 @@ namespace ConsoleRpgEntities.Models.Characters
                 return null;
             }
 
+            if (validWeapons.Count == 1)
+            {
+                return (Weapon)validWeapons[0].Item;
+            }
+
             for (int i = 0; i < validWeapons.Count; i++)
             {
                 var weapon = validWeapons[i].Item;
