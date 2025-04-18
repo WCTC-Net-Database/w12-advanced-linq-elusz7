@@ -13,7 +13,7 @@ namespace ConsoleRpgEntities.Models.Characters
         public string Name { get; set; }
         public int Health { get; set; }
         public virtual ICollection<Ability> Abilities { get; set; } = new List<Ability>();
-        public virtual ICollection<Item> Inventory { get; set; } = new List<Item>();
+        public virtual Inventory Inventory { get; set; } 
         public void Attack(ITargetable target)
         {
             if (CanAttack(target))
@@ -112,7 +112,7 @@ namespace ConsoleRpgEntities.Models.Characters
         }
         private Weapon? SelectAttackWeapon()
         {
-            var validWeapons = Inventory
+            var validWeapons = Inventory.Items
                 .Select((item, index) => new { Item = item, Index = index })
                 .Where(entry => entry.Item is Weapon weapon && weapon.Durability > 0)
                 .ToList();
@@ -147,7 +147,7 @@ namespace ConsoleRpgEntities.Models.Characters
         {
             Armor? activeArmor = null;
 
-            foreach (Item item in Inventory)
+            foreach (Item item in Inventory.Items)
             {
                 if (item is Armor armor && armor.Durability > 0)
                 {

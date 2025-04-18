@@ -17,9 +17,8 @@ public abstract class Item : IItem
 
     public string ItemType { get; set; }
 
-    public int PlayerId { get; set; }
-
-    public Player Player { get; set; } = new Player();
+    public int? InventoryId { get; set; }
+    public Inventory Inventory { get; set; }
 
     public abstract int Use();
 }

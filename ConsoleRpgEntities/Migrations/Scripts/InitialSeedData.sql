@@ -4,6 +4,12 @@ VALUES
     (1, 'Sir Lancelot', 100, 0);
 SET IDENTITY_INSERT Players OFF;
 
+SET IDENTITY_INSERT Inventories ON;
+INSERT INTO Inventories (Id, Gold, Capacity, PlayerId)
+VALUES
+    (1, 100, 10, 1);
+SET IDENTITY_INSERT Inventories OFF;
+
 SET IDENTITY_INSERT Monsters ON;
 INSERT INTO Monsters (Id, Name, MonsterType, Health, AggressionLevel, Sneakiness)
 VALUES
@@ -17,12 +23,12 @@ VALUES
 SET IDENTITY_INSERT Abilities OFF;
 
 SET IDENTITY_INSERT Items ON;
-INSERT INTO Items (Id, Name, Value, Description, LinkedPlayerId, ItemType, AttackPower, DefensePower, Durability)
+INSERT INTO Items (Id, Name, Value, Description, InventoryId, ItemType, AttackPower, DefensePower, Durability)
 VALUES
-    (1, 'Sword', 7.2, 'A sharp sword', 1, 'Weapon', 10, 0, 5),
-    (2, 'Shield', 4.8, 'A sturdy shield', 1, 'Armor', 0, 5, 5),
-    (3, 'Bracer', 2.5, 'A beaten-up bracer', 1, 'Armor', 0, 2, 2),
-    (4, 'Dagger', 3.5, 'A small dagger', 1, 'Weapon', 5, 0, 3);
+    (1, 'Starter Sword', 5.0, 'A basic sword', 1, 'Weapon', 5, 0, 10),
+    (2, 'Wooden Shield', 3.0, 'A cheap shield', 1, 'Armor', 0, 3, 4),
+    (3, 'Rusty Dagger', 0.7, 'A rusting dagger', 1, 'Weapon', 2, 0, 3),
+    (4, 'Leather Armor', 4.0, 'Basic leather armor', 1, 'Armor', 0, 5, 10);
 SET IDENTITY_INSERT Items OFF;
 
 

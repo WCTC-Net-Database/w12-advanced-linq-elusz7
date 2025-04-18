@@ -12,6 +12,7 @@ namespace ConsoleRpgEntities.Data
         public DbSet<Monster>? Monsters { get; set; }
         public DbSet<Ability>? Abilities { get; set; }
         public DbSet<Item>? Items { get; set; }
+        public DbSet<Inventory>? Inventories { get; set; }
 
         public GameContext(DbContextOptions<GameContext> options) : base(options)
         {
@@ -34,15 +35,15 @@ namespace ConsoleRpgEntities.Data
                 .HasValue<Weapon>("Weapon")
                 .HasValue<Armor>("Armor");
 
-            modelBuilder.Entity<Item>()
-                .Property(i => i.PlayerId)
-                .HasColumnName("LinkedPlayerId");
-
             modelBuilder.Entity<Player>()
-                .HasMany(p => p.Inventory)
+                .HasOne(p => p.Inventory)
                 .WithOne(i => i.Player)
-                .HasForeignKey(i => i.PlayerId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey<Inventory>(i => i.PlayerId);
+
+            modelBuilder.Entity<Inventory>()
+                .HasMany(i => i.Items)
+                .WithOne(item => item.Inventory)
+                .HasForeignKey(item => item.InventoryId);
 
             // Configure many-to-many relationship
             modelBuilder.Entity<Player>()

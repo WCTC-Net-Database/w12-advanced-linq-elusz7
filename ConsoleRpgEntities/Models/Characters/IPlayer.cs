@@ -12,7 +12,7 @@ public interface IPlayer
 
     ICollection<Ability> Abilities { get; set; }
 
-    ICollection<Item> Inventory { get; set; }
+    Inventory Inventory { get; set; }
 
     void Attack(ITargetable target);
     void UseAbility(IAbility ability, ITargetable target);
