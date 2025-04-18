@@ -7,13 +7,14 @@ using ConsoleRpgEntities.Models.Characters;
 
 namespace ConsoleRpgEntities.Models.Items;
 
-public abstract class Item : IItem
+public abstract class Item
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public double Value { get; set; }
+    public decimal Value { get; set; }
     public string Description { get; set; }
     public int Durability { get; set; }
+    public decimal Weight { get; set; }
 
     public string ItemType { get; set; }
 

@@ -7,7 +7,7 @@ SET IDENTITY_INSERT Players OFF;
 SET IDENTITY_INSERT Inventories ON;
 INSERT INTO Inventories (Id, Gold, Capacity, PlayerId)
 VALUES
-    (1, 100, 10, 1);
+    (1, 100, 34.7, 1);
 SET IDENTITY_INSERT Inventories OFF;
 
 SET IDENTITY_INSERT Monsters ON;
@@ -23,12 +23,12 @@ VALUES
 SET IDENTITY_INSERT Abilities OFF;
 
 SET IDENTITY_INSERT Items ON;
-INSERT INTO Items (Id, Name, Value, Description, InventoryId, ItemType, AttackPower, DefensePower, Durability)
+INSERT INTO Items (Id, Name, Value, Description, Weight, InventoryId, ItemType, AttackPower, DefensePower, Durability)
 VALUES
-    (1, 'Starter Sword', 5.0, 'A basic sword', 1, 'Weapon', 5, 0, 10),
-    (2, 'Wooden Shield', 3.0, 'A cheap shield', 1, 'Armor', 0, 3, 4),
-    (3, 'Rusty Dagger', 0.7, 'A rusting dagger', 1, 'Weapon', 2, 0, 3),
-    (4, 'Leather Armor', 4.0, 'Basic leather armor', 1, 'Armor', 0, 5, 10);
+    (1, 'Starter Sword', 5.0, 'A basic sword', 12.4, 1, 'Weapon', 5, 0, 10),
+    (2, 'Wooden Shield', 3.0, 'A cheap shield', 8.7, 1, 'Armor', 0, 3, 4),
+    (3, 'Rusty Dagger', 0.7, 'A rusting dagger', 3.1, 1, 'Weapon', 2, 0, 3),
+    (4, 'Leather Armor', 4.0, 'Basic leather armor', 4.3, 1, 'Armor', 0, 5, 10);
 SET IDENTITY_INSERT Items OFF;
 
 

@@ -51,8 +51,9 @@ namespace ConsoleRpgEntities.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Value = table.Column<double>(type: "float", nullable: false),
+                    Value = table.Column<double>(type: "decimal(5,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Weight = table.Column<double>(type: "decimal(5,2)", nullable: false),
                     InventoryId = table.Column<int>(type: "int", nullable: false),
                     ItemType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AttackPower = table.Column<int>(type: "int", nullable: true),
