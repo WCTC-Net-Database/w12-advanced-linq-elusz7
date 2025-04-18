@@ -10,12 +10,16 @@ namespace ConsoleRpgEntities.Models.Characters.Monsters
         public int AggressionLevel { get; set; }
         public string MonsterType { get; set; }
 
-        protected Monster()
-        {
-
-        }
-
         public abstract void Attack(ITargetable target);
 
+        public void TakeDamage(int damage)
+        {
+            Health -= damage;
+
+            if (Health <= 0)
+            {
+                Console.WriteLine($"{Name} has been defeated!");
+            }
+        }
     }
 }

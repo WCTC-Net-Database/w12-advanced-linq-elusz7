@@ -3,5 +3,6 @@
 public interface ITargetable
 {
     string Name { get; set; }
-    int Health { get; set; }
+
+    void TakeDamage(int damage);
 }

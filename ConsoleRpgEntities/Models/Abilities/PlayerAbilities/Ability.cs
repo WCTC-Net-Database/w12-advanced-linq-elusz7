@@ -10,7 +10,7 @@ namespace ConsoleRpgEntities.Models.Abilities.PlayerAbilities
         public string Description { get; set; }
         public string AbilityType { get; set; }
 
-        public virtual ICollection<Player> Players { get; set; }
+        public virtual IEnumerable<Player> Players { get; set; }
 
         protected Ability()
         {

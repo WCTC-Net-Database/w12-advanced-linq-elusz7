@@ -9,7 +9,22 @@ namespace ConsoleRpgEntities.Models.Characters.Monsters
         public override void Attack(ITargetable target)
         {
             // Goblin-specific attack logic
-            Console.WriteLine($"{Name} sneaks up and attacks {target.Name}!");
+            int damage = 8;
+            Console.WriteLine($"{Name} sneaks up and attacks {target.Name} for {damage} damage!");
+
+            if (target is Player player)
+            {
+                player.TakeDamage(damage);
+            }
+            else
+            {
+                target.TakeDamage(damage);
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"Goblin: {Name}, Health: {Health}";
         }
     }
 }

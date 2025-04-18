@@ -12,8 +12,8 @@ public class GameEngine
     private readonly MenuManager _menuManager;
     private readonly OutputManager _outputManager;
 
-    private IPlayer _player;
-    private IMonster _goblin;
+    private IPlayer? _player;
+    private IMonster? _goblin;
 
     public GameEngine(GameContext context, MenuManager menuManager, OutputManager outputManager)
     {
@@ -63,16 +63,41 @@ public class GameEngine
 
     private void AttackCharacter()
     {
+        if (_goblin == null || _player == null)
+        {
+            _outputManager.WriteLine("No characters available to attack.", ConsoleColor.Red);
+            return;
+        }
+
         if (_goblin is ITargetable targetableGoblin)
         {
             _player.Attack(targetableGoblin);
+            if (((Goblin)_goblin).Health <= 0)
+            {
+                _goblin = null; // Remove the goblin from the game
+                return;
+            }
             _player.UseAbility(_player.Abilities.First(), targetableGoblin);
+            if (((Goblin)_goblin).Health <= 0)
+            {
+                _goblin = null; // Remove the goblin from the game
+                return;
+            }
         }
+        if (_player is ITargetable targetablePlayer)
+        {
+            _goblin.Attack(targetablePlayer);
+        }
+
+        
+        if (((Player)_player).Health <= 0)
+            _player = null; // Remove the player from the game 
     }
+
 
     private void SetupGame()
     {
-        _player = _context.Players.FirstOrDefault();
+        _player = _context.Players.OfType<Player>().FirstOrDefault();
         _outputManager.WriteLine($"{_player.Name} has entered the game.", ConsoleColor.Green);
 
         // Load monsters into random rooms 
