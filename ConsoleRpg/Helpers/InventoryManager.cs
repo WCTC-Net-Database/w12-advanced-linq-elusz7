@@ -9,6 +9,7 @@ public class InventoryManager
 {
     private Player player;
     private List<Item> itemList;
+    private static string sortOrder = "asc";
 
     public void InventoryMenu(IPlayer character, List<Item> items, GameEngine home)
     {
@@ -122,8 +123,6 @@ public class InventoryManager
     }
     public void SortItems()
     {
-        string sortOrder = "asc";
-
         while (true)
         {
             Console.WriteLine("\nSort Options:");
@@ -140,13 +139,13 @@ public class InventoryManager
             switch (input)
             {
                 case "1":
-                    SortByName(sortOrder);
+                    SortByName();
                     break;
                 case "2":
-                    SortByAttack(sortOrder);
+                    SortByAttack();
                     break;
                 case "3":
-                    SortByDefense(sortOrder);
+                    SortByDefense();
                     break;
                 case "4":
                     sortOrder = sortOrder == "asc" ? "desc" : "asc";
@@ -160,10 +159,10 @@ public class InventoryManager
 
         }
     }
-    private void SortByName(string order)
+    private void SortByName()
     {
         List<Item> sorted;
-        if (order == "asc")
+        if (sortOrder == "asc")
         {
             sorted = itemList.OrderBy(i => i.Name).ToList();
         }
@@ -176,10 +175,10 @@ public class InventoryManager
             Console.WriteLine($"\tItem Name: {item.Name}, Type: {item.ItemType}");
         }
     }
-    private void SortByAttack(string order)
+    private void SortByAttack()
     {
         List<Weapon> sorted;
-        if (order == "asc")
+        if (sortOrder == "asc")
         {
             sorted = itemList.OfType<Weapon>().OrderBy(w => w.AttackPower).ToList();
         }
@@ -192,10 +191,10 @@ public class InventoryManager
             Console.WriteLine($"\tItem Name: {item.Name}, AttackPower: {item.AttackPower}");
         }
     }
-    private void SortByDefense(string order)
+    private void SortByDefense()
     {
         List<Armor> sorted;
-        if (order == "asc")
+        if (sortOrder == "asc")
         {
             sorted = itemList.OfType<Armor>().OrderBy(w => w.DefensePower).ToList();
         }
