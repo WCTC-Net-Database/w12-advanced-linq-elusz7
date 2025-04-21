@@ -3,11 +3,7 @@
 ################################################################################
 
 /.vs/W12-assignment-template
-/ConsoleRpg/bin/Debug/net6.0/runtimes
-/ConsoleRpg/bin/Debug/net6.0
-/ConsoleRpg/obj/Debug/net6.0
-/ConsoleRpg/obj/ConsoleRpg.csproj.nuget.dgspec.json
-/ConsoleRpg/obj/ConsoleRpg.csproj.nuget.g.props
-/ConsoleRpg/obj/ConsoleRpg.csproj.nuget.g.targets
-/ConsoleRpg/obj/project.assets.json
-/ConsoleRpg/obj/project.nuget.cache
+/ConsoleRpg/bin/
+/ConsoleRpg/obj/
+/ConsoleRpgEntities/bin/
+/ConsoleRpgEntities/obj/
