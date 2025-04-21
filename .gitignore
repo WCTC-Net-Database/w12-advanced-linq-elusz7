@@ -3,7 +3,7 @@
 ################################################################################
 
 /.vs/W12-assignment-template
-/ConsoleRpg/bin/
-/ConsoleRpg/obj/
-/ConsoleRpgEntities/bin/
-/ConsoleRpgEntities/obj/
+/ConsoleRpg/bin/Debug/net6.0
+/ConsoleRpg/obj/Debug/net6.0
+/ConsoleRpgEntities/bin/Debug/net6.0
+/ConsoleRpgEntities/obj/Debug/net6.0
