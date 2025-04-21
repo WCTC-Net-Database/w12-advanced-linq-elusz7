@@ -35,7 +35,6 @@ namespace ConsoleRpgEntities.Models.Characters
 
                         target.TakeDamage(damage);
 
-                        Console.WriteLine($"{weapon.Name} : durability {weapon.Durability}");
                         if (weapon.Durability <= 0)
                         {
                             Console.WriteLine($"{weapon.Name} is broken and cannot be used anymore!");

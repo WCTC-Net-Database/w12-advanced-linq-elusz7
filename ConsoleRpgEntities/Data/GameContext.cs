@@ -35,6 +35,14 @@ namespace ConsoleRpgEntities.Data
                 .HasValue<Weapon>("Weapon")
                 .HasValue<Armor>("Armor");
 
+            modelBuilder.Entity<Item>()
+                .Property(i => i.Value)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Item>()
+                .Property(i => i.Weight)
+                .HasColumnType("decimal(18,2)");
+
             modelBuilder.Entity<Player>()
                 .HasOne(p => p.Inventory)
                 .WithOne(i => i.Player)
